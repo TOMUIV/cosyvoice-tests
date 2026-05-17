@@ -1,0 +1,13 @@
+# ASR Verification Results (FunASR-Nano)
+# Generated 2026-05-18
+
+t01_pupu_fail:        "可有好梦一闹么？少爷未真亲。"       ❌ GARBAGE
+t02_pupu_add_ta:      "于是他扑扑衣上的泥土。"               ✅ CORRECT  
+t03_pupu_only:        (not verified via ASR)
+t04_pupu_add_ta_only: (not verified via ASR)
+t05_pupu_full:        "只是铺铺叶上的泥土，心里很轻松似的。" ⚠️ NEAR-CORRECT
+t06_paipai_fail:      "Here you wait, I see you..."           ❌ ENGLISH GARBAGE
+t07_pu_change:        "于是铺了布艺上的泥土。"                ⚠️ PARTIAL
+t08_dou_dou:          "用演技止息牛喊狗..."                   ❌ GARBAGE
+
+Note: t06 (拍拍) sounds correct to human ear despite ASR failure.
