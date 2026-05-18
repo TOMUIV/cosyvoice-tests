@@ -8,18 +8,33 @@
 
 ## Test Results
 
-| # | File | Input Sentence | ASR Output | Verdict |
-|---|------|---------------|------------|:------:|
-| 1 | `t01_pupu_fail.wav` | 于是扑扑衣上的泥土 | 神威王も二枚... | ❌ 日文乱码 |
-| 2 | `t02_pupu_add_ta.wav` | 于是他扑扑衣上的泥土 | 于是他扑扑衣上的泥土，哼哼哼 | ✅ |
-| 3 | `t03_pupu_only.wav` | 于是扑扑 | 油烟开会呢，就秒开哦 | ❌ 乱码 |
-| 4 | `t04_pupu_add_ta_only.wav` | 于是他扑扑 | 于是他噗噗 | ✅ |
-| 5 | `t05_pupu_full.wav` | 于是扑扑衣上的泥土，心里很轻松似的 | 日式，铺铺衣上的泥土... | ⚠️ |
-| 6 | `t06_paipai_fail.wav` | 于是拍了拍衣上的泥土 | 于是拍了拍衣上的泥土 | ✅ |
-| 7 | `t07_pu_change.wav` | 于是扑了扑衣上的泥土 | 下の道には長いに... | ❌ 日文乱码 |
-| 8 | `t08_dou_dou.wav` | 于是抖了抖衣上的泥土 | 于是抖了抖印上的泥土 | ✅ |
+### Instruct Mode (WARM mood)
 
-All tests use the EXACT same WARM mood description. Only the Chinese input text differs.
+| # | Input | ASR Output | 
+|---|-------|-----------|
+| 1 | 于是**扑扑**衣上的泥土 | 神威王も二枚... ❌ Japanese |
+| 2 | 于是**他扑扑**衣上的泥土 | 于是他扑扑衣上的泥土 ✅ |
+| 3 | 于是**扑扑** | 油烟开会呢 ❌ gibberish |
+| 4 | 于是**他扑扑** | 于是他噗噗 ✅ |
+| 5 | 于是**扑扑**衣上的泥土，心里很轻松似的 | 日式铺铺衣上的泥土 ⚠️ |
+| 6 | 于是**拍了拍**衣上的泥土 | 于是拍了拍衣上的泥土 ✅ |
+| 7 | 于是**扑了扑**衣上的泥土 | 下の道には... ❌ Japanese |
+| 8 | 于是**抖了抖**衣上的泥土 | 于是抖了抖印上的泥土 ✅ |
+
+### SFT Mode (no mood, control group)
+
+| # | Input | ASR Output |
+|---|-------|-----------|
+| 1 | 于是扑扑衣上的泥土 | 这是铺铺衣裳的泥土 ✅ |
+| 2 | 于是他扑扑衣上的泥土 | 于是他噗噗衣上了泥土 ✅ |
+| 3 | 于是扑扑 | 这是扑 ✅ |
+| 4 | 于是他扑扑 | 于是他噗噗 ✅ |
+| 5 | 于是扑扑衣上的泥土，心里很轻松似的 | 就是铺铺衣裳的泥土 ✅ |
+| 6 | 于是拍了拍衣上的泥土 | 于是拍了拍衣上的泥土 ✅ |
+| 7 | 于是扑了扑衣上的泥土 | 只是铺了铺衣上的泥土 ✅ |
+| 8 | 于是抖了抖衣上的泥土 | 于是抖了抖衣上的泥土 ✅ |
+
+**All 8 SFT tests are intelligible. 4 out of 8 Instruct tests are garbled.**
 
 ## Key Finding
 - Adding a single character "他" at the start (t01→t02) completely fixes the output
