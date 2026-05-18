@@ -1,6 +1,8 @@
-"""Generate test WAVs for '于是扑扑' hypothesis"""
+"""Generate test WAVs for '于是扑扑' reproduction.
+Usage: cd /path/to/CosyVoice && python path/to/this_script.py
+Requires: CosyVoice-300M-Instruct model at ~/cosyvoice_models/iic/CosyVoice-300M-Instruct"""
 import sys,os,numpy as np,wave
-sys.path.insert(0,r'D:\资料库\python\AIStudio\CosyVoice');os.chdir(r'D:\资料库\python\AIStudio\CosyVoice')
+sys.path.insert(0,'.'); os.chdir('.')  # cd to CosyVoice dir first
 sys.stdout.reconfigure(encoding='utf-8')
 from cosyvoice.cli.cosyvoice import AutoModel
 

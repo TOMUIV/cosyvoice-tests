@@ -1,5 +1,7 @@
+"""ASR verify all test WAVs using FunASR-Nano."""
 import sys,os,subprocess,glob
-sys.path.insert(0,r'C:\Users\TOM\miniconda3\envs\AIStudio\Lib\site-packages\funasr\models\fun_asr_nano')
+# If FunASRNano is not registered, uncomment:
+# sys.path.insert(0, '/path/to/funasr/models/fun_asr_nano')
 from funasr import AutoModel
 base=os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 out=base+'/output'

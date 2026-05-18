@@ -4,7 +4,6 @@
 - GPU: RTX 5060 (Blackwell sm_120)
 - torch 2.11.0+cu128, transformers 5.6.2
 - CosyVoice commit: ace7c47
-- Model: CosyVoice-300M-Instruct (iic/CosyVoice-300M-Instruct)
 - Mood: WARM (`"A nostalgic middle-aged woman, recalling old memories with gentle affection..."`) for all tests
 
 ## Test Results
