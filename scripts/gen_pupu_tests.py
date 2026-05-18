@@ -18,7 +18,7 @@ tests=[
     ("t08_dou_dou",         "于是抖了抖衣上的泥土",     WARM, "❌ '抖了抖'"),
 ]
 
-outdir=r'D:\资料库\python\AIStudio\output'
+outdir=os.path.dirname(os.path.dirname(os.path.abspath(__file__)))+'/output'
 for name,txt,instr,note in tests:
     r=model.inference_instruct(txt,'中文女',instr)
     wavs=[c['tts_speech'].cpu().numpy() for c in r]
