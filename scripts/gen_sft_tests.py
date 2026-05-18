@@ -1,6 +1,8 @@
-"""Generate SFT versions for comparison"""
+"""Generate SFT versions for comparison.
+Usage: cd /path/to/CosyVoice && python path/to/this_script.py
+Requires: CosyVoice-300M-SFT at ~/cosyvoice_models/iic/CosyVoice-300M-SFT"""
 import sys,os,numpy as np,wave
-sys.path.insert(0,r'D:\资料库\python\AIStudio\CosyVoice');os.chdir(r'D:\资料库\python\AIStudio\CosyVoice')
+sys.path.insert(0,'.'); os.chdir('.')
 sys.stdout.reconfigure(encoding='utf-8')
 from cosyvoice.cli.cosyvoice import AutoModel
 
