@@ -8,23 +8,39 @@
 
 ## Test Results
 
-### Instruct Mode (WARM mood)
+All tests use the same Chinese input: `于是扑扑衣上的泥土`
 
-| # | Input | ASR Output | 
-|---|-------|-----------|
-| 1 | 于是**扑扑**衣上的泥土 | 神威王も二枚... ❌ Japanese |
+### 5-way Comparison
+
+| # | File | Mode | Prompt | ASR |
+|---|------|------|--------|-----|
+| A | `s01_pupu_sft.wav` | SFT | (none) | 这是铺铺衣裳的泥土 ✅ |
+| B | `prompt_0_empty.wav` | Instruct | `<\|endofprompt\|>` (0 words) | 于是，噗噗衣上的泥土 ✅ |
+| C | `prompt_2_en.wav` | Instruct | `A narrator.` (2 words) | 于是，铺铺印上的泥土 ✅ |
+| D | `prompt_3_cn.wav` | Instruct | `温柔的女声。` (1 word) | 于是扑扑衣上的泥土 ✅ |
+| E | `prompt_39_warm.wav` | Instruct | WARM full (21 words) | 神威王も二枚... ❌ Japanese |
+
+**Short prompts (0-3 words): all correct. Long prompt (21 words): garbled.**
+
+### Instruct (full WARM) vs SFT — 8-sentence matrix
+
+**Instruct (WARM, 21 words)**
+
+| # | Input | ASR |
+|---|-------|-----|
+| 1 | 于是**扑扑**衣上的泥土 | 神威王も二枚... ❌ |
 | 2 | 于是**他扑扑**衣上的泥土 | 于是他扑扑衣上的泥土 ✅ |
-| 3 | 于是**扑扑** | 油烟开会呢 ❌ gibberish |
+| 3 | 于是**扑扑** | 油烟开会呢 ❌ |
 | 4 | 于是**他扑扑** | 于是他噗噗 ✅ |
 | 5 | 于是**扑扑**衣上的泥土，心里很轻松似的 | 日式铺铺衣上的泥土 ⚠️ |
 | 6 | 于是**拍了拍**衣上的泥土 | 于是拍了拍衣上的泥土 ✅ |
-| 7 | 于是**扑了扑**衣上的泥土 | 下の道には... ❌ Japanese |
+| 7 | 于是**扑了扑**衣上的泥土 | 下の道には... ❌ |
 | 8 | 于是**抖了抖**衣上的泥土 | 于是抖了抖印上的泥土 ✅ |
 
-### SFT Mode (no mood, control group)
+**SFT (control)**
 
-| # | Input | ASR Output |
-|---|-------|-----------|
+| # | Input | ASR |
+|---|-------|-----|
 | 1 | 于是扑扑衣上的泥土 | 这是铺铺衣裳的泥土 ✅ |
 | 2 | 于是他扑扑衣上的泥土 | 于是他噗噗衣上了泥土 ✅ |
 | 3 | 于是扑扑 | 这是扑 ✅ |
@@ -34,7 +50,7 @@
 | 7 | 于是扑了扑衣上的泥土 | 只是铺了铺衣上的泥土 ✅ |
 | 8 | 于是抖了抖衣上的泥土 | 于是抖了抖衣上的泥土 ✅ |
 
-**All 8 SFT tests are intelligible. 4 out of 8 Instruct tests are garbled.**
+**Instruct (WARM): 4/8 garbled. SFT: 8/8 correct.**
 
 ## Key Finding
 - Adding a single character "他" at the start (t01→t02) completely fixes the output
